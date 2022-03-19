@@ -14,15 +14,15 @@ class SecPipeline:
 		cik_target = []
 		comp_names = []
 
-		name_list = open('C:/Users/Xu/Desktop/output/check_list.csv', 'r', encoding='utf-8')
+		name_list = open('/check_list.csv', 'r', encoding='utf-8')
 		name_reader = csv.reader(name_list)
-		cik_list = open('C:/Users/Xu/Desktop/output/cik_list.csv', 'a', newline='', encoding='utf-8')
+		cik_list = open('/cik_list.csv', 'a', newline='', encoding='utf-8')
 		out_writer = csv.writer(cik_list)
 
 		for name_line in name_reader:
 			if name_line[0] != None:
 				print(name_line[0])
-				cik_list = open('C:/Users/Xu/Desktop/sec_scraper/sec/sec/spiders/cik-lookup-data.csv', 'r', encoding='utf-8', errors='ignore')
+				cik_list = open('/cik-lookup-data.csv', 'r', encoding='utf-8', errors='ignore')
 				cik_reader = csv.reader(cik_list, delimiter=',')
 				compare = []
 				for cik_line in cik_reader:
@@ -56,7 +56,7 @@ class SecPipeline:
 		# options.add_argument('--headless')
 		chrome_service = fs.Service(executable_path='C:/chromedriver.exe')
 		driver = webdriver.Chrome(service=chrome_service, options=options)
-		scrape_list = open('C:/Users/Xu/Desktop/output/site_to_scrape.csv', 'r', encoding='utf-8')
+		scrape_list = open('/site_to_scrape.csv', 'r', encoding='utf-8')
 		list_reader = csv.reader(scrape_list, delimiter=',')
 
 		target_list = []
@@ -91,7 +91,7 @@ class SecPipeline:
 			'Health' : ['Health', 'Fitness'],
 			'Safety' : ['Safety']
 		}
-		result_csv = open('C:/Users/Xu/Desktop/output/result.csv', 'a', newline='', encoding='utf-8')
+		result_csv = open('/result.csv', 'a', newline='', encoding='utf-8')
 		result_writer = csv.writer(result_csv)
 		result_writer.writerow(['企業名', '記載項目'] + list(keywords.keys()))
 
