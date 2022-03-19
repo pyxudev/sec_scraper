@@ -10,7 +10,7 @@ class SecSpider(scrapy.Spider):
 	def start_requests(self):
 		comp_names = []
 		cik_target = []
-		cik_list = open('C:/Users/Xu/Desktop/output/cik_list.csv', 'r', encoding='utf-8')
+		cik_list = open('/cik_list.csv', 'r', encoding='utf-8')
 		cik_reader = csv.reader(cik_list, delimiter=',')
 
 		for cik_line in cik_reader:
@@ -54,7 +54,7 @@ class SecSpider(scrapy.Spider):
 			if '10-K' in tr:
 				link = tr.split('<a href="/ix?doc=')[1].split('">')[0]
 				url = 'https://www.sec.gov' + link
-				res = open('C:/Users/Xu/Desktop/output/site_to_scrape.csv', 'a', newline='', encoding='utf-8')
+				res = open('/site_to_scrape.csv', 'a', newline='', encoding='utf-8')
 				res_writer = csv.writer(res)
 				res_writer.writerow([name, url])
 				res.close()
